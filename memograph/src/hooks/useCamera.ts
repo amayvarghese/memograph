@@ -3,8 +3,8 @@
 import { useRef, useCallback, useState } from 'react';
 
 interface UseCameraReturn {
-  videoRef: React.RefObject<HTMLVideoElement>;
-  canvasRef: React.RefObject<HTMLCanvasElement>;
+  videoRef: React.RefObject<HTMLVideoElement | null>;
+  canvasRef: React.RefObject<HTMLCanvasElement | null>;
   stream: MediaStream | null;
   error: string | null;
   startCamera: () => Promise<void>;

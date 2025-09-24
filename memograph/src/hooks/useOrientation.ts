@@ -51,8 +51,8 @@ export const useOrientation = (): UseOrientationReturn => {
 
     try {
       // For iOS 13+, we need to request permission
-      if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
-        const permission = await (DeviceOrientationEvent as any).requestPermission();
+      if (typeof (DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> }).requestPermission === 'function') {
+        const permission = await (DeviceOrientationEvent as unknown as { requestPermission: () => Promise<string> }).requestPermission();
         if (permission === 'granted') {
           setError(null);
           return true;
